@@ -1,3 +1,38 @@
+const createTableHeader(leagues) {
+  const thead =  document.createElement("thead");
+  const tr = document.createElement("tr");
+  
+  leagues.forEach(league => {
+    const th = document.createElement("th");
+    const text = document.createTextNode(league);
+    th.appendChild(text);
+    th.setAttribute("scope", "col");
+    tr.appendChild(th);
+  })
+  
+  thead.appendChild(tr);
+  return thead
+}
+
+const createTableBody(dataArray) {
+  const tbody = document.createElement("tbody");
+  
+  dataArray[0]["classNames"].forEach((className, i) => {
+    const tr = document.createElement("tr");
+    const th = document.createElement("th");
+    th.appendChild(document.createTextNode(className));
+    th.setAttribute("scope", "row");
+    tr.appendChild(th);
+    
+    dataArray.forEach(data => {
+      const td = document.createElement("td");
+      const text = data.classes.filter(x => x === i).length;
+      td.appendChild(text);
+      tr.appendChild(td);
+    })
+  })
+}
+
 const getPoeStatistics = async () => {
   const leagues = ["ultimatum", "hardcore-ultimatum", "ssf-ultimatum", "ssf-ultimatum-hc"];
   
@@ -8,17 +43,13 @@ const getPoeStatistics = async () => {
     return { classNames, classes }
   }))
   
-  leagues.splice(0, 0, "classNames").forEach(league)
+  leagues.splice(0, 0, "classNames").forEach(league);
   
-  const res = await fetch("/poe/api/overview=ultimatum&type=exp");
-  const { classNames, classes } = await res.json();
-  
-  classNames.forEach((poeClass, i) => {
-    const li = document.createElement("li");
-    const text = document.createTextNode(`${poeClass}: ${classes.filter(x => x === i).length}`);
-    li.appendChild(text);
-    document.getElementById("poeClassNames").appendChild(li);
-  })
+  const thead = createTableHeader(leagues);  
+  const tbody = createTableBody(dataArray);
+  const table = document.getElementById("poeTable");
+  table.appendChild(thead);
+  table.appendChild(tbody);
 }
 
 getPoeStatistics();
