@@ -1,5 +1,5 @@
 async function hello() {
-  return Promise.resolve("Hello World");
+  return Promise.resolve("Hello World" + process.env.DEMO_VARIABLE);
 }
 
 exports.handler = async function(event, context) {
