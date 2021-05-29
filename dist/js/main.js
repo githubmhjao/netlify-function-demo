@@ -30,7 +30,11 @@ const createTableBody = dataArray => {
       td.appendChild(text);
       tr.appendChild(td);
     })
+    
+    tbody.appendChild(tr);
   })
+  
+  return tbody
 }
 
 const getPoeStatistics = async () => {
