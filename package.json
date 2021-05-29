@@ -2,7 +2,7 @@
   "name": "netlify-function-demo",
   "version": "1.0.0",
   "description": "The demo of netlify function",
-  "main": "index.js"
+  "main": "index.js",
   "license": "MIT",  
   "dependencies": {
     "random-words": "^1.1.1",
