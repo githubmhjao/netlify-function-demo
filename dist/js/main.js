@@ -1,4 +1,4 @@
-const createTableHeader(leagues) {
+const createTableHeader = leagues => {
   const thead =  document.createElement("thead");
   const tr = document.createElement("tr");
   
@@ -14,7 +14,7 @@ const createTableHeader(leagues) {
   return thead
 }
 
-const createTableBody(dataArray) {
+const createTableBody = dataArray => {
   const tbody = document.createElement("tbody");
   
   dataArray[0]["classNames"].forEach((className, i) => {
