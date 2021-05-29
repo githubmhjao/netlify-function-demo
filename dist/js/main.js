@@ -1,5 +1,5 @@
 const getPoeStatistics = async () => {
-  const res = await fetch("/poe/api");
+  const res = await fetch("/poe/api/overview=ultimatum&type=exp");
   const { classNames, classes } = await res.json();
   
   classNames.forEach((poeClass, i) => {
