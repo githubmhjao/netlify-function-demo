@@ -38,7 +38,7 @@ const getPoeStatistics = async () => {
   
   const dataArray = await Promise.all(leagues.map(league => {
     const url = `/poe/api/overview=${league}&type=exp&language=en`;
-    const res = awati fetch(url);
+    const res = await fetch(url);
     const { classNames, classes } = await res.json();
     return { classNames, classes }
   }))
