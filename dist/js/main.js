@@ -36,7 +36,7 @@ const createTableBody = dataArray => {
 const getPoeStatistics = async () => {
   const leagues = ["ultimatum", "hardcore-ultimatum", "ssf-ultimatum", "ssf-ultimatum-hc"];
   
-  const dataArray = await Promise.all(leagues.map(league => {
+  const dataArray = await Promise.all(leagues.map(async league => {
     const url = `/poe/api/overview=${league}&type=exp&language=en`;
     const res = await fetch(url);
     const { classNames, classes } = await res.json();
