@@ -26,7 +26,7 @@ const createTableBody = dataArray => {
     
     dataArray.forEach(data => {
       const td = document.createElement("td");
-      const text = data.classes.filter(x => x === i).length;
+      const text = document.createTextNode(data.classes.filter(x => x === i).length);
       td.appendChild(text);
       tr.appendChild(td);
     })
