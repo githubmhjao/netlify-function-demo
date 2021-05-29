@@ -1,10 +1,10 @@
 const getPoeStatistics = async () => {
   const res = await fetch("/poe/api");
-  const { poeClassNames, poeClasses } = await res.json();
+  const { classNames, classes } = await res.json();
   
-  poeClassNames.forEach((poeClass, i) => {
+  classNames.forEach((poeClass, i) => {
     const li = document.createElement("li");
-    const text = document.createTextNode(`${poeClass}: ${poeClasses.filter(x => x === i).length}`);
+    const text = document.createTextNode(`${poeClass}: ${classes.filter(x => x === i).length}`);
     li.appendChild(text);
     document.getElementById("poeClassNames").appendChild(li);
   })
