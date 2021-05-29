@@ -43,7 +43,7 @@ const getPoeStatistics = async () => {
     return { classNames, classes }
   }))
   
-  leagues.splice(0, 0, "classNames").forEach(league);
+  leagues.splice(0, 0, "classNames");
   
   const thead = createTableHeader(leagues);  
   const tbody = createTableBody(dataArray);
