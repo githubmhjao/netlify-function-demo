@@ -1,5 +1,7 @@
-async function hello() {
-  return Promise.resolve("Hello World" + process.env.DEMO_VARIABLE);
+const randomWords = require("random-words");
+
+async function getWord() {
+  return Promise.resolve(`${process.env.DEMO_VARIABLE}\n${randomWords().toUpperCase()}`);
 }
 
 exports.handler = async function(event, context) {
