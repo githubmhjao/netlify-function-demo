@@ -52,7 +52,7 @@ const createTableBody = statistics => {
 
 const getCovid19Data = async date => {
   const parser = new DOMParser();
-  const res = await fetch(`${date}.csv`);
+  const res = await fetch(`/covid_19/api/${date}.csv`);
   const sourceString = await res.text();
   
   const doc = parser.parseFromString(sourceString, "text/html");
