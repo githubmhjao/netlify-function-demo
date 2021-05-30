@@ -2,8 +2,11 @@ const colStart = 7;
 const colEnd = 11;
 
 const dateArray = [...Array(7)].map((x, i) => {
-  const selectDate = new Date(Date.now() - (8 - i)*24*3600*1000)
-  return `${selectDate.getUTCMonth() + 1}-${selectDate.getUTCDate()}-${selectDate.getUTCFullYear()}`
+  const selectDate = new Date(Date.now() - (8 - i)*24*3600*1000).toJSON();
+  const year = selectDate.slice(0, 4);
+  const month = selectDate.slice(5, 7);
+  const date = selectDate.slice(8, 10);
+  return `${month}-${date}-${year}`
 })
 
 const createTableHead = statistics => {
