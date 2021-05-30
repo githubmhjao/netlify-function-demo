@@ -1,1 +1,2 @@
 /poe/api/* https://poe.ninja/api/data/3b89ac161795b494007535af7e1e6be4/getbuildoverview?:splat 200
+/covid_19/api/* https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_daily_reports/:splat 200
