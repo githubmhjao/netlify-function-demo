@@ -31,9 +31,9 @@ const createTableHead = statistics => {
 
 const createTableBody = statistics => {
   const tbody = document.createElement("tbody");
-  const tr = document.createElement("tr");
   
   statistics.forEach(x => {
+    const tr = document.createElement("tr");
     const th = document.createElement("th");
     th.appendChild(document.createTextNode(x.date));
     th.setAttribute("scope", "row");
@@ -44,9 +44,10 @@ const createTableBody = statistics => {
       td.appendChild(document.createTextNode(d));
       tr.appendChild(td);
     })
+    
+    tbody.appendChild(tr);
   })
   
-  tbody.appendChild(tr);
   return tbody
 }
 
@@ -64,7 +65,7 @@ const getCovid19Data = async date => {
 }
 
 const getCovid19Statistics = async dateArray => {
-  const statistics = await dateArray.map(async date => await getCovid19Data(date));
+  const statistics = await Promise.all(dateArray.map(async date => await getCovid19Data(date)));
   const thead = createTableHead(statistics);
   const tbody = createTableBody(statistics);
   const table = document.getElementById("covid19Table");
